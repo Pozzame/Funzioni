@@ -859,7 +859,7 @@ console.log("Data di scadenza della garanzia: " + warrantyExpirationDate);
 //     console.log("La garanzia è ancora valida.");
 // }
 */
-
+/*
 class notValidError extends Error {
     constructor(message = "Valore non valido") {
         super(message);
@@ -911,7 +911,7 @@ try{
     console.log("Trasferimento di 7000 da " + Marco.IBAN + " a " + Manuela.IBAN + " effettuato con successo.");   
 } catch (error){
     if (error instanceof notValidError){
-        alert(error.message);
+        console.log(error.message);
     } else {
         console.log(error.message);
     }
@@ -927,3 +927,43 @@ try{
 }
 console.log(Manuela);
 console.log(Marco);
+*/
+// const timer = setTimeout(() => {
+//     console.log("Esecuzione ritardata di 2 secondi");
+// }, 2000);
+
+// console.log("Esecuzione immediata");
+
+
+// const interval = setInterval(() => {
+//     Manuela.versa(100);
+// }, 1000);
+
+// setTimeout(() => {
+//     console.log(Manuela);
+// }, 2000);
+
+// setTimeout(() => {
+//     console.log(Manuela);
+// }, 20000);
+
+// setInterval(() => {
+// location.replace("https://www.google.it");
+// }, 1000);
+// history.back();
+// history.back();
+// console.log(document.getElementById('accauno'));
+// console.log(document.getElementById('pagarafo'));
+
+// let h1 = document.querySelectorAll('.accauno');
+// console.log(h1);
+
+let dogImg = document.getElementById('dogImg');
+console.log(dogImg);
+
+setTimeout(() => {
+    dogImg.setAttribute('src', 'https://amicidicasa.it/wp-content/uploads/2022/07/AdobeStock_142043710-1024x683.jpeg');
+}, 2000);
+
+// dogImg.setAttribute('src', 'https://amicidicasa.it/wp-content/uploads/2022/07/AdobeStock_142043710-1024x683.jpeg');
+// dogImg.src = "https://www.focus.it/images/2020/08/04/cane.jpg";
