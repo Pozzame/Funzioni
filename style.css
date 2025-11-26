@@ -1,4 +1,126 @@
-.dogImg {
-    width: 300px;
-    height: auto;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: whitesmoke;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 .2rem 1rem black;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav button {
+    max-height: 28px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.brand {
+    font-size: 24px;
+    color: #1877f2;
+    display: flex;
+    justify-content:center;
+
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+.menu {
+    display: flex;
+    justify-content: start;
+}
+
+.links{
+    display: none;
+}
+
+.links > * {
+    padding-right: 1rem;
+}
+
+.container {
+    padding: 1rem;
+}
+.container > img {
+    border-radius: 10%;
+}
+.content{
+    color: red;
+}
+.content > *{
+    background-color:rgba(0, 0, 0, 0.2);
+}
+
+.bottoncino{
+    padding: 0.6rem;
+    background-color:white;
+    border-radius: 100%;
+}
+
+.cont-modale{
+    background-color: rgba(0, 0, 0, 50%);
+}
+
+.modale{
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.sideMenu {
+    background-color: #d2d0d0;
+    padding-top: 20px;
+    width: 1px;
+    transition-property: width;
+    transition-duration: 1s;
+}
+
+.sideMenu:hover {
+    width: 100px;
+}
+
+.sideMenu a, .sideMenu h2 {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    opacity: 0;
+    /* transition-property: background-color; */
+
+}
+.sideMenu h2 {
+    padding: 0;
+    font-size: 24px;
+}
+.sideMenu:hover a, .sideMenu:hover h2 {
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-delay: 0.4s;
+    opacity: 1;
+} 
+
+.sideMenu a:hover {
+    background-color: #575454;
+    color: white;
+}
+
+.sideMenu > h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.evidenziato {
+    background-color: yellow;
+    transition: background-color 0.5s;
 }

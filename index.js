@@ -1,3 +1,117 @@
+// var age = 13;
+// var isAmmitted = age >= 14;
+// console.log("è ammesso in sala: " + isAmmitted);
+
+//var isFemale = true;
+// var gender = prompt("Inserisci il tuo gender ");
+// var height = Number(prompt("Inserisci la tua altezza in metri "));
+// var weight = Number(prompt("Inserisci il tuo peso in kg "));
+
+// var BMI = weight / (height ** 2);
+
+// //var isAmmitted = gender == "female" && BMI > 25;
+// console.log("ammettibilità " + (gender == "female" && BMI > 25));
+
+// prices = [100, 50, 30, 20, 10];
+// console.log(prices);
+// prezzi = prices
+
+// prezzi [0] = 90;
+// console.log(prezzi);
+// console.log(prices);
+
+// var words = ["ciao", "ragazzi", "come", "state"];
+
+// words.forEach(element => {console.log(element);});
+// console.log(words.join(" "));
+
+// for (var i = 0; i < words.length; i++) {
+//     console.log(words[i]);
+// }
+
+// console.log(words[0] + " " + words[1] + " " + words[2] + " " + words[3]);
+
+// cicPrizes = [3.5, 7.0, 2.0, 4.5];
+// var tariffs = [34, 20, 46, 32];
+// var total = [];
+// for (var i = 0; i < cicPrizes.length; i++) {
+//     total[i] = cicPrizes[i] + (cicPrizes[i]/100 * tariffs[i]);
+//     console.log("Il prezzo totale è " + total[i]);
+// }
+
+// console.log(total); 
+
+
+// total[0] = cicPrizes[0] + (cicPrizes[0]/100 * tariffs[0]);
+// total[1] = cicPrizes[1] + (cicPrizes[1]/100 * tariffs[1]);
+// total[2] = cicPrizes[2] + (cicPrizes[2]/100 * tariffs[2]);
+// total[3] = cicPrizes[3] + (cicPrizes[3]/100 * tariffs[3]);
+// console.log(total);
+
+
+// var num = 38;
+// console.log("Il numero è " + (num % 2 ? "dis" : "") + "pari");
+
+
+// var importo = 90;
+// console.log ("Da pagare: " + (importo - (importo >= 100 ? importo * 0.2 : 0)));
+
+// var pwd = prompt ("Inserisci la password ");
+// alert("Accesso " + (pwd === "HackerinoTopolino99!" ? "Benvenuto Admin" : "Password Errata"));
+
+// var drink = Number(prompt(" 1 - acqua \n 2 - cocacola \n 3 - sprite \n Seleziona la tua bevanda: "));
+
+// switch (drink) {
+//     case 1:
+//         alert("Erogazione acqua in corso");
+//         break;
+//     case 2:
+//         alert("Erogazione cocacola in corso");
+//         break;
+//     case 3:
+//         alert("Erogazione sprite in corso");
+//         break;
+//     default:
+//         alert("Bevanda non disponibile");
+//         break;
+// }
+
+// var vel = Number(prompt("Inserisci la velocità della tua auto in km/h: "));
+
+// if (vel > 200) {
+//     alert("Multa 1000 euro.");
+// } else if (vel > 160) {
+//     alert("Multa 500 euro.");
+// } else if (vel > 130) {
+//     alert("Multa 200 euro.");
+// } else {
+//     alert("Limite rispettato");
+// }
+/*
+var items = [10.5, 20.0, 5.5, 3.0, 15.0];
+var sum = 0;
+
+var prices = [15.0, 3.5, 10, 25, 9.99];
+
+//for (var i = 0; i < prices.length; i++) {
+var i = 0;
+while (i < prices.length) {
+    if (prices[i] >= 10) {
+        sum += prices[i];
+    }
+    i++;
+}
+console.log("La somma totale è: " + sum);
+
+var msg = "ciao mamma guarda come mi divertoooo... con cantatuuu!!!";
+var count = 0;
+for (var i = 0; i < msg.length; i++) {
+    if (msg[i] == 'o') {
+        count++;
+    }
+}
+console.log("Il numero di 'o' è: " + count);
+*/
 // function scassa(a){
 //     a += " mondo";
 //     console.log(a);
@@ -958,12 +1072,8 @@ console.log(Marco);
 // let h1 = document.querySelectorAll('.accauno');
 // console.log(h1);
 
-let dogImg = document.getElementById('dogImg');
-console.log(dogImg);
+let barra = document.getElementById('barra');
 
-setTimeout(() => {
-    dogImg.setAttribute('src', 'https://amicidicasa.it/wp-content/uploads/2022/07/AdobeStock_142043710-1024x683.jpeg');
-}, 2000);
-
-// dogImg.setAttribute('src', 'https://amicidicasa.it/wp-content/uploads/2022/07/AdobeStock_142043710-1024x683.jpeg');
-// dogImg.src = "https://www.focus.it/images/2020/08/04/cane.jpg";
+setInterval(() => {
+    barra.classList.toggle('evidenziato');
+}, 500);
