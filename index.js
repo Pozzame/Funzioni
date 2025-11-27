@@ -1072,8 +1072,81 @@ console.log(Marco);
 // let h1 = document.querySelectorAll('.accauno');
 // console.log(h1);
 
+const postDto = [
+    {
+        src:"https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        title:"Welcome to Facebook",
+        content:"Connect with friends and the world around you on Facebook."
+    },
+    {
+        src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVfHORQFLyUf_rNove-xUmxIskDeMJ63REz_YIMQ6S0vCyQdkBvJos4igKspvCgpqnpy8h0xM--1uckzZIxDgyoHy37-MowkF-YzvVx8&s=10",
+        title:"Gatto in vendita",
+        content:"Miagola da scassare le orecchie."
+    },
+    {
+        src:"https://magazine.arcaplanet.it/wp-content/uploads/2023/02/razza-gatto-european-shorthair.jpg",
+        title:"Gatta dolce",
+        content:"Dolce come il miele."
+    },
+    {
+        src:"https://www.infomotori.com/content/uploads/2024/08/Bugatti-W16-Mistral.jpg",
+        title:"Vendo auto sportiva",
+        content:"Boh, credo Panda truccata."
+    },
+    {
+        src:"https://www.sicurmoto.it/wp-content/uploads/2025/01/Panigale-V2-2025.jpg",
+        title:"Motorino per neopatentati",
+        content:"Facile da guidare e economico da mantenere."
+    },    {
+        src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/CrossBild_Jonas_Edberg_H%C3%B6kens%C3%A5s.jpg/1200px-CrossBild_Jonas_Edberg_H%C3%B6kens%C3%A5s.jpg",
+        title:"Corso motocross",
+        content:"Livello baby."
+    },    {
+        src:"https://www.liveinup.it/blog/wp-content/uploads/2022/11/simone-moro-helicopter-yellow-1024x682-1-1024x682.jpg",
+        title:"Ventilatore",
+        content:"Vendo ventilatore per quando fa caldo."
+    },    {
+        src:"https://i.ytimg.com/vi/wf9Xq55WKNs/maxresdefault.jpg",
+        title:"Barchino da pesca",
+        content:"Vendo per passaggio a modello più grande."
+    },    {
+        src:"https://upload.wikimedia.org/wikipedia/commons/b/b0/Airbus_A300-600ST_Beluga_F-GSTB_%2841346659120%29.jpg",
+        title:"Aereo brutto",
+        content:"Vendo perché troppo brutto e non mi sta sulla mensola."
+    }
+]
+
 let barra = document.getElementById('barra');
 
 setInterval(() => {
     barra.classList.toggle('evidenziato');
 }, 500);
+
+let menuBtn = document.getElementById('menuBtn');
+menuBtn.addEventListener('click', () => {
+    alert("Hai cliccato il bottone!");
+});
+
+
+let body = document.getElementById('postsContainers');
+postDto.forEach(post => {
+    let postContainer = document.createElement('div');
+    postContainer.classList.add('container');
+    body.appendChild(postContainer);
+
+        let img = document.createElement('img');
+        img.src = post.src;
+        postContainer.appendChild(img);
+
+        let contentDiv = document.createElement('div');
+        contentDiv.classList.add('content');
+        postContainer.appendChild(contentDiv);
+
+            let title = document.createElement('h2');
+            title.innerText = post.title;
+            contentDiv.appendChild(title);
+
+            let content = document.createElement('p');
+            content.innerText = post.content;
+            contentDiv.appendChild(content);
+});
