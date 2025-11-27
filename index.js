@@ -1122,17 +1122,17 @@ setInterval(() => {
     barra.classList.toggle('evidenziato');
 }, 500);
 
-let menuBtn = document.getElementById('menuBtn');
-menuBtn.addEventListener('click', () => {
-    alert("Hai cliccato il bottone!");
-});
+// let menuBtn = document.getElementById('menuBtn');
+// menuBtn.addEventListener('click', () => {
+//     alert("Hai cliccato il bottone!");
+// });
 
 
-let body = document.getElementById('postsContainers');
+let main = document.getElementById('postsContainers');
 postDto.forEach(post => {
     let postContainer = document.createElement('div');
     postContainer.classList.add('container');
-    body.appendChild(postContainer);
+    main.appendChild(postContainer);
 
         let img = document.createElement('img');
         img.src = post.src;
@@ -1149,4 +1149,21 @@ postDto.forEach(post => {
             let content = document.createElement('p');
             content.innerText = post.content;
             contentDiv.appendChild(content);
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const div = menuBtn.parentElement;
+const body = div.parentElement;
+
+menuBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    console.log('paragrafo cliccato', event);
+});
+
+div.addEventListener('click', (event) => {
+    console.log('div cliccato', event);
+});
+
+body.addEventListener('click', (event) => {
+    console.log('body cliccato', event);
 });
