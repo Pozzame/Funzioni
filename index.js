@@ -1149,7 +1149,7 @@ const postDto = [
         id: 8,
         src:"https://upload.wikimedia.org/wikipedia/commons/b/b0/Airbus_A300-600ST_Beluga_F-GSTB_%2841346659120%29.jpg",
         title:"Aereo brutto",
-        content:"Vendo perché troppo brutto e non mi sta sulla mensola.",
+        content:"Vendo perché non mi sta sulla mensola.",
         likes: [],
         authorId: 7,
         createdAt: (new Date(2023, 4, 5, 17, 45)).getTime()
@@ -1182,7 +1182,8 @@ let users =
     new User("Pino", "Pinucci", 12),
     new User("Ciuccio", "DeCiuccis", 8),
     new User("Ciccio", "Pasticcio", 12),
-    new User("Coso", "Maffo", 8)
+    new User("Coso", "Maffo", 8),
+    new User("Altro", "Cane", 72)
 ]
 
 
