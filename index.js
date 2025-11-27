@@ -1071,6 +1071,35 @@ console.log(Marco);
 
 // let h1 = document.querySelectorAll('.accauno');
 // console.log(h1);
+/*
+const menuBtn = document.getElementById('menuBtn');
+const div = menuBtn.parentElement;
+const body = div.parentElement;
+
+menuBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    console.log('paragrafo cliccato', event);
+});
+
+div.addEventListener('click', (event) => {
+    console.log('div cliccato', event);
+});
+
+body.addEventListener('click', (event) => {
+    console.log('body cliccato', event);
+});
+
+let barra = document.getElementById('barra');
+
+// let menuBtn = document.getElementById('menuBtn');
+// menuBtn.addEventListener('click', () => {
+//     alert("Hai cliccato il bottone!");
+// });
+*/
+
+setInterval(() => {
+    barra.classList.toggle('evidenziato');
+}, 500);
 
 const postDto = [
     {
@@ -1153,6 +1182,87 @@ const postDto = [
         likes: [],
         authorId: 7,
         createdAt: (new Date(2023, 4, 5, 17, 45)).getTime()
+    },
+    {
+        id: 9,
+        title:"Robot",
+        content: "Il mio robotino ed io al mare",
+        src: "https://www.southpark.it/immagini/episodi/stagione8/2/originali/3.jpg",
+        likes: [0],
+        authorId: 4,
+        createdAt: (new Date(2023, 4, 1, 9, 30)).getTime()
+    },
+    {
+        id: 10,
+        title:"Dazi",
+        content: "Dazi a te, a te e pure a te",
+        src: "https://www.hallofseries.com/wp-content/uploads/2016/11/2-1.jpg",
+        likes: [],
+        authorId: 5,
+        createdAt: (new Date(2023, 4, 1, 12, 25)).getTime()
+    },
+    {
+        id: 11,
+        title:"Carte",
+        content: "Non hai le carte!",
+        src: "https://i.guim.co.uk/img/media/323c85fb489c1c7d57d366f0b0053679a2c6c5df/107_0_718_431/master/718.png?width=465&quality=85&dpr=1&s=none",
+        likes: [0, 6],
+        authorId: 5,
+        createdAt: (new Date(2023, 4, 1, 12, 30)).getTime()
+    },
+    {
+        id: 12,
+        title:"Kenny",
+        content: "Hanno ucciso Kenny",
+        src: "https://img.wattpad.com/53c23b2e2500c7a4cec8b2edf7b2ff5d41ecbb46/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f71702d4772696449494e375669673d3d2d3330333637353430362e313436663161646562346365356337393236313238333234373134352e676966",
+        likes: [0, 2, 5, 6],
+        authorId: 1,
+        createdAt: (new Date(2023, 4, 2, 9, 30)).getTime()
+    },
+    {
+        id: 13,
+        title:"Droga",
+        content: "Nuovo stupefacente dilaga tra i giovani",
+        src: "https://i.pinimg.com/736x/38/10/5a/38105a419f08bd0dca9a848f80e4297d.jpg",
+        likes: [5],
+        authorId: 4,
+        createdAt: (new Date(2023, 4, 2, 9, 35)).getTime()
+    },
+    {
+        id: 14,
+        title:"Conferenza",
+        content: "Conferenza in allegria",
+        src: "https://www.southpark.it/immagini/episodi/stagione13/9/originali/3.jpg",
+        likes: [5],
+        authorId: 3,
+        createdAt: (new Date(2023, 4, 2, 9, 37)).getTime()
+    },
+    {
+        id: 15,
+        title:"Crime",
+        content: "Il crimine dilaga in città",
+        src: "https://www.southpark.it/immagini/episodi/stagione13/9/originali/2.jpg",
+        likes: [3, 5],
+        authorId: 6,
+        createdAt: (new Date(2023, 4, 2, 9, 45)).getTime()
+    },
+    {
+        id: 16,
+        title:"Gold",
+        content: "Compro Oro",
+        src: "https://tv-fanatic-res.cloudinary.com/iu/s--8QSCTKhB--/t_full/cs_srgb,d_tv-fanatic-placeholder-square.png,f_auto,fl_strip_profile.lossy,q_auto:420/v1371228190/buy-from-cartman.png",
+        likes: [],
+        authorId: 0,
+        createdAt: (new Date(2024, 2, 29, 15, 0)).getTime()
+    },
+    {
+        id: 17,
+        title:"Uomogatto",
+        content: "C'era una volta su... italia 1",
+        src: "https://www.pazzidifanta.com/wp-content/uploads/2022/12/uomo_gatto_screen-3-1250x782.jpg",
+        likes: [],
+        authorId: 7,
+        createdAt: (new Date(2023, 4, 5, 17, 45)).getTime()
     }
 ]
 
@@ -1186,19 +1296,6 @@ let users =
     new User("Altro", "Cane", 72)
 ]
 
-
-let barra = document.getElementById('barra');
-
-setInterval(() => {
-    barra.classList.toggle('evidenziato');
-}, 500);
-
-// let menuBtn = document.getElementById('menuBtn');
-// menuBtn.addEventListener('click', () => {
-//     alert("Hai cliccato il bottone!");
-// });
-
-
 let main = document.getElementById('postsContainers');
 postDto.forEach(post => {
     let postContainer = document.createElement('div');
@@ -1228,27 +1325,12 @@ postDto.forEach(post => {
             let likes = document.createElement('div');
             likes.innerText = post.likes.length + " Likes";
             detailDiv.appendChild(likes);
+
             let author = document.createElement('div');
             author.innerText = users[post.authorId].nome + " " + users[post.authorId].cognome;
             detailDiv.appendChild(author);
+
             let createdAt = document.createElement('div');
             createdAt.innerText = new Date(post.createdAt).toLocaleString();
             detailDiv.appendChild(createdAt);
-});
-
-const menuBtn = document.getElementById('menuBtn');
-const div = menuBtn.parentElement;
-const body = div.parentElement;
-
-menuBtn.addEventListener('click', (event) => {
-    event.stopPropagation();
-    console.log('paragrafo cliccato', event);
-});
-
-div.addEventListener('click', (event) => {
-    console.log('div cliccato', event);
-});
-
-body.addEventListener('click', (event) => {
-    console.log('body cliccato', event);
 });
