@@ -51,6 +51,14 @@ nav button {
 .container {
     padding: 1rem;
 }
+.info{
+    color: red;
+    padding-left: 1rem;
+}
+.info > *{
+    background-color:rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
 .container > img {
     border-radius: 10%;
 }

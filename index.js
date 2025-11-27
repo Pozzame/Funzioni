@@ -1074,47 +1074,117 @@ console.log(Marco);
 
 const postDto = [
     {
+        id: 0,
         src:"https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title:"Welcome to Facebook",
-        content:"Connect with friends and the world around you on Facebook."
+        content:"Connect with friends and the world around you on Facebook.",
+        likes: [0],
+        authorId: 4,
+        createdAt: (new Date(2023, 4, 1, 9, 30)).getTime()
     },
     {
+        id: 1,
         src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVfHORQFLyUf_rNove-xUmxIskDeMJ63REz_YIMQ6S0vCyQdkBvJos4igKspvCgpqnpy8h0xM--1uckzZIxDgyoHy37-MowkF-YzvVx8&s=10",
         title:"Gatto in vendita",
-        content:"Miagola da scassare le orecchie."
+        content:"Miagola da scassare le orecchie.",
+        likes: [],
+        authorId: 5,
+        createdAt: (new Date(2023, 4, 1, 12, 25)).getTime()
     },
     {
+        id: 2,
         src:"https://magazine.arcaplanet.it/wp-content/uploads/2023/02/razza-gatto-european-shorthair.jpg",
         title:"Gatta dolce",
-        content:"Dolce come il miele."
+        content:"Dolce come il miele.",
+        likes: [0, 6],
+        authorId: 5,
+        createdAt: (new Date(2023, 4, 1, 12, 30)).getTime()
     },
     {
+        id: 3,
         src:"https://www.infomotori.com/content/uploads/2024/08/Bugatti-W16-Mistral.jpg",
         title:"Vendo auto sportiva",
-        content:"Boh, credo Panda truccata."
+        content:"Boh, credo Panda truccata.",
+        likes: [0, 2, 5, 6],
+        authorId: 1,
+        createdAt: (new Date(2023, 4, 2, 9, 30)).getTime()
     },
     {
+        id: 4,
         src:"https://www.sicurmoto.it/wp-content/uploads/2025/01/Panigale-V2-2025.jpg",
         title:"Motorino per neopatentati",
-        content:"Facile da guidare e economico da mantenere."
-    },    {
+        content:"Facile da guidare e economico da mantenere.",
+        likes: [5],
+        authorId: 4,
+        createdAt: (new Date(2023, 4, 2, 9, 35)).getTime()
+    },
+    {
+        id: 5,
         src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/CrossBild_Jonas_Edberg_H%C3%B6kens%C3%A5s.jpg/1200px-CrossBild_Jonas_Edberg_H%C3%B6kens%C3%A5s.jpg",
         title:"Corso motocross",
-        content:"Livello baby."
-    },    {
+        content:"Livello baby.",
+        likes: [5],
+        authorId: 3,
+        createdAt: (new Date(2023, 4, 2, 9, 37)).getTime()
+    },
+    {
+        id: 6,
         src:"https://www.liveinup.it/blog/wp-content/uploads/2022/11/simone-moro-helicopter-yellow-1024x682-1-1024x682.jpg",
         title:"Ventilatore",
-        content:"Vendo ventilatore per quando fa caldo."
-    },    {
+        content:"Vendo ventilatore per quando fa caldo.",
+        likes: [3, 5],
+        authorId: 6,
+        createdAt: (new Date(2023, 4, 2, 9, 45)).getTime()
+    },    
+    {
+        id: 7,
         src:"https://i.ytimg.com/vi/wf9Xq55WKNs/maxresdefault.jpg",
         title:"Barchino da pesca",
-        content:"Vendo per passaggio a modello più grande."
-    },    {
+        content:"Vendo per passaggio a modello più grande.",
+        likes: [],
+        authorId: 0,
+        createdAt: (new Date(2024, 2, 29, 15, 0)).getTime()
+    },    
+    {
+        id: 8,
         src:"https://upload.wikimedia.org/wikipedia/commons/b/b0/Airbus_A300-600ST_Beluga_F-GSTB_%2841346659120%29.jpg",
         title:"Aereo brutto",
-        content:"Vendo perché troppo brutto e non mi sta sulla mensola."
+        content:"Vendo perché troppo brutto e non mi sta sulla mensola.",
+        likes: [],
+        authorId: 7,
+        createdAt: (new Date(2023, 4, 5, 17, 45)).getTime()
     }
 ]
+
+class User {
+    static nextId=1;
+
+    constructor(nome, cognome, età){
+        this.id = User.nextId;
+        User.increaseNextId();
+        this.nome = nome;
+        this.cognome = cognome;
+        this.età = età;
+    }
+    saluta(){
+        console.log("Ciao, sono " + this.nome + " " + this.cognome);
+    }
+
+    static increaseNextId(){
+        User.nextId++;
+    }
+}
+let users = 
+[
+    new User("Eric", "Cartman", 10),
+    new User("Kenny", "McCormick", 9),
+    new User("Stan", "Marsh", 10),
+    new User("Pino", "Pinucci", 12),
+    new User("Ciuccio", "DeCiuccis", 8),
+    new User("Ciccio", "Pasticcio", 12),
+    new User("Coso", "Maffo", 8)
+]
+
 
 let barra = document.getElementById('barra');
 
@@ -1149,6 +1219,20 @@ postDto.forEach(post => {
             let content = document.createElement('p');
             content.innerText = post.content;
             contentDiv.appendChild(content);
+
+        let detailDiv = document.createElement('div');
+        detailDiv.classList.add('info');
+        postContainer.appendChild(detailDiv);
+            
+            let likes = document.createElement('div');
+            likes.innerText = post.likes.length + " Likes";
+            detailDiv.appendChild(likes);
+            let author = document.createElement('div');
+            author.innerText = users[post.authorId].nome + " " + users[post.authorId].cognome;
+            detailDiv.appendChild(author);
+            let createdAt = document.createElement('div');
+            createdAt.innerText = new Date(post.createdAt).toLocaleString();
+            detailDiv.appendChild(createdAt);
 });
 
 const menuBtn = document.getElementById('menuBtn');
