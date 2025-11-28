@@ -1096,7 +1096,7 @@ let barra = document.getElementById('barra');
 //     alert("Hai cliccato il bottone!");
 // });
 */
-
+/*
 setInterval(() => {
     barra.classList.toggle('evidenziato');
 }, 500);
@@ -1334,3 +1334,114 @@ postDto.forEach(post => {
             createdAt.innerText = new Date(post.createdAt).toLocaleString();
             detailDiv.appendChild(createdAt);
 });
+*/
+
+// function sum(num1, num2){
+//     console.log( num1+num2);
+// }
+// function duble(num){
+//     console.log("ok");
+//     window.setInterval(()=>sum(num, num), 1000);
+// }
+
+// function ok(num){return num;};
+// function no(){return 'w';};
+
+// function dubleAsync(num, resolve, reject){
+//     if (num > 0)
+//         resolve(duble(num));
+//     else 
+//         reject();
+// }
+
+
+// let a = 5;
+// let b = 3;
+// // dubleAsync(a, ok, no);
+
+//     window.setInterval( ()=>duble(a), 5000);
+
+// let promessa = new Promise (function (resolve, reject){
+//     if (true)
+//         resolve();
+//     else 
+//         reject(new Error('no'));
+
+// })
+
+// promise.then(function(result){console.log("ok", )})
+
+fetch('https://asocial.cyberdelia.eu/api/v1/post')
+    .then(function(response){
+        return response.json();})
+    .then(function(response){
+        class User {
+            static nextId=1;
+
+            constructor(nome, cognome, età){
+                this.id = User.nextId;
+                User.increaseNextId();
+                this.nome = nome;
+                this.cognome = cognome;
+                this.età = età;
+            }
+            saluta(){
+                console.log("Ciao, sono " + this.nome + " " + this.cognome);
+            }
+
+            static increaseNextId(){
+                User.nextId++;
+            }
+        }
+        let users = 
+        [
+            new User("Eric", "Cartman", 10),
+            new User("Kenny", "McCormick", 9),
+            new User("Stan", "Marsh", 10),
+            new User("Pino", "Pinucci", 12),
+            new User("Ciuccio", "DeCiuccis", 8),
+            new User("Ciccio", "Pasticcio", 12),
+            new User("Coso", "Maffo", 8),
+            new User("Altro", "Cane", 72)
+        ]
+
+        let main = document.getElementById('postsContainers');
+        console.log(response);
+
+        response.forEach(post => {
+            let postContainer = document.createElement('div');
+            postContainer.classList.add('container');
+            main.appendChild(postContainer);
+
+                let img = document.createElement('img');
+                img.src = post.imgSrc;
+                postContainer.appendChild(img);
+
+                let contentDiv = document.createElement('div');
+                contentDiv.classList.add('content');
+                postContainer.appendChild(contentDiv);
+
+                    let content = document.createElement('p');
+                    content.innerText = post.content;
+                    contentDiv.appendChild(content);
+
+                let detailDiv = document.createElement('div');
+                detailDiv.classList.add('info');
+                postContainer.appendChild(detailDiv);
+                    
+                    let likes = document.createElement('div');
+                    likes.innerText = post.likes.length + " Likes";
+                    detailDiv.appendChild(likes);
+
+                    let author = document.createElement('div');
+                    author.innerText = users[post.authorId].nome + " " + users[post.authorId].cognome;
+                    detailDiv.appendChild(author);
+
+                    let createdAt = document.createElement('div');
+                    createdAt.innerText = new Date(post.createdAt).toLocaleString();
+                    detailDiv.appendChild(createdAt);
+});});
+
+// let array=dati.then(function( response){
+// return response.json();
+// });
