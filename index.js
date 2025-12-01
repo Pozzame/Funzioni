@@ -1373,75 +1373,114 @@ postDto.forEach(post => {
 
 // async function loadPosts(){
 
-class User {
-    static nextId=1;
+// class User {
+//     static nextId=1;
 
-    constructor(nome, cognome, età){
-        this.id = User.nextId;
-        User.increaseNextId();
-        this.nome = nome;
-        this.cognome = cognome;
-        this.età = età;
+//     constructor(nome, cognome, età){
+//         this.id = User.nextId;
+//         User.increaseNextId();
+//         this.nome = nome;
+//         this.cognome = cognome;
+//         this.età = età;
+//     }
+//     saluta(){
+//         console.log("Ciao, sono " + this.nome + " " + this.cognome);
+//     }
+
+//     static increaseNextId(){
+//         User.nextId++;
+//     }
+// }
+// let users = 
+// [
+//     new User("Eric", "Cartman", 10),
+//     new User("Kenny", "McCormick", 9),
+//     new User("Stan", "Marsh", 10),
+//     new User("Pino", "Pinucci", 12),
+//     new User("Ciuccio", "DeCiuccis", 8),
+//     new User("Ciccio", "Pasticcio", 12),
+//     new User("Coso", "Maffo", 8),
+//     new User("Altro", "Cane", 72)
+// ]
+
+
+import {loadPosts, createUser, sendPost, updateUser, updatePost, deletePost, deleteUser} from "./funzioni.js"
+
+const userButton = document.getElementById('userButton');
+
+userButton.addEventListener("click", () => {
+    // event.preventDefault();
+    const modale = document.querySelector('.cont-modale');
+    modale.style.display = 'flex';
+});
+newUserForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const firstName = document.getElementById('firstname');
+    const lastName = document.getElementById('lastname');
+    const userEmail = document.getElementById('email');
+    const userAge = document.getElementById('age');
+    const user = {
+        firstname: firstName.value,
+        lastname: lastName.value,
+        email: userEmail.value,
+        age: Number(userAge.value)
     }
-    saluta(){
-        console.log("Ciao, sono " + this.nome + " " + this.cognome);
-    }
+    
+    createUser(user).then((user)=>console.log(user)).catch((error)=>console.log(error));
+    
+    
+    firstName.value="";
+    lastName.value="";
+    userEmail.value="";
+    userAge.value="";
+    document.querySelector('.cont-modale').style.display = 'none';
+});
 
-    static increaseNextId(){
-        User.nextId++;
-    }
-}
-let users = 
-[
-    new User("Eric", "Cartman", 10),
-    new User("Kenny", "McCormick", 9),
-    new User("Stan", "Marsh", 10),
-    new User("Pino", "Pinucci", 12),
-    new User("Ciuccio", "DeCiuccis", 8),
-    new User("Ciccio", "Pasticcio", 12),
-    new User("Coso", "Maffo", 8),
-    new User("Altro", "Cane", 72)
-]
-async function loadPosts() {
-    let response = await fetch('https://asocial.cyberdelia.eu/api/v1/post');
-    let postsDto = await response.json();
-    let main = document.getElementById('postsContainers');
 
-    postsDto.forEach(post => {
-        let postContainer = document.createElement('div');
-        postContainer.classList.add('container');
-        main.appendChild(postContainer);
 
-            let img = document.createElement('img');
-            img.src = post.imgSrc;
-            postContainer.appendChild(img);
+// for (i=9; i<=11;i++){
+// deleteUser(141)
+//     .catch((error)=>console.log(error));
+// }
 
-            let contentDiv = document.createElement('div');
-            contentDiv.classList.add('content');
-            postContainer.appendChild(contentDiv);
+// deletePost(30)
+//     .catch((error)=>console.log(error));
 
-                let content = document.createElement('p');
-                content.innerText = post.content;
-                contentDiv.appendChild(content);
+// const post = {
+//     content: "Contenuto",
+//     authorId: 1
+// }
+// updatePost(63, post)
+//     .then((post)=>console.log(post))
+//     .catch((error)=>console.log(error));
 
-            let detailDiv = document.createElement('div');
-            detailDiv.classList.add('info');
-            postContainer.appendChild(detailDiv);
-                
-                let likes = document.createElement('div');
-                likes.innerText = post.likes.length + " Likes";
-                detailDiv.appendChild(likes);
+// const newUser = {
+//         firstname: 'Coso',
+//         lastname: 'Antani'
+//     };
+// createUser(newUser)
+//     .then((user)=>console.log(user))
+//     .catch((error)=>console.log(error));
 
-                let author = document.createElement('div');
-                author.innerText = users[post.authorId].nome + " " + users[post.authorId].cognome;
-                detailDiv.appendChild(author);
+loadPosts()
+    .catch((error) => {
+        console.log(error);    
+});
 
-                let createdAt = document.createElement('div');
-                createdAt.innerText = new Date(post.createdAt).toLocaleString();
-                detailDiv.appendChild(createdAt);
-});};
+// const updatedUser = {
+//     email: 'user@domain.org'
+// }
+// updateUser(27, updatedUser)
+    // .then((user)=>console.log(user))
+    // .catch((error)=>console.log(error));
 
-// let array=dati.then(function( response){
-// return response.json();
-// });
-loadPosts();
+// const post = {
+//     cintent: 'Barchino da pesca" + "\n" + "Vendo per passaggio a modello più grande."',
+//     imgSrc: "https://i.ytimg.com/vi/wf9Xq55WKNs/maxresdefault.jpg",
+//     likes: [2, 4],
+//     authorId: 144,
+//     createdAt: new Date(2024, 2, 29, 15, 0).getTime()
+// }
+// sendPost(post)
+//     .then((post)=>console.log(post))
+//     .catch((error)=>console.log(error));

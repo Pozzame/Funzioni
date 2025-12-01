@@ -131,3 +131,7 @@ nav button {
     background-color: yellow;
     transition: background-color 0.5s;
 }
+
+.form-area {
+    margin-left: 1.8rem;
+}
