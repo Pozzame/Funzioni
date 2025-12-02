@@ -1410,7 +1410,7 @@ const userButton = document.getElementById('userButton');
 
 userButton.addEventListener("click", () => {
     // event.preventDefault();
-    const modale = document.querySelector('.cont-modale');
+    const modale = document.querySelector('.cont-newUserModale');
     modale.style.display = 'flex';
 });
 newUserForm.addEventListener('submit', (event) => {
@@ -1428,14 +1428,41 @@ newUserForm.addEventListener('submit', (event) => {
     
     createUser(user).then((user)=>console.log(user)).catch((error)=>console.log(error));
     
-    
     firstName.value="";
     lastName.value="";
     userEmail.value="";
     userAge.value="";
-    document.querySelector('.cont-modale').style.display = 'none';
+    document.querySelector('.cont-newUserModale').style.display = 'none';
 });
 
+const newPostButton = document.getElementById('newPostButton');
+
+newPostButton.addEventListener("click", () => {
+    // event.preventDefault();
+    const modale = document.querySelector('.cont-newPostModale');
+    modale.style.display = 'flex';
+});
+newPostForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const content = document.getElementById('content');
+    const imgSrc = document.getElementById('imgSrc');
+    const authorId = document.getElementById('authorId');
+    const post = {
+        content: content.value,
+        imgSrc: imgSrc.value,
+        authorId: authorId.value,
+        likes: [],
+        createdAt: new Date().getTime()
+    }
+    sendPost(post)
+        .then((post)=>console.log(post))
+        .catch((error)=>console.log(error));
+
+    content.value="";
+    imgSrc.value="";
+    authorId.value="";
+    document.querySelector('.cont-newPostModale').style.display = 'none';
+});
 
 
 // for (i=9; i<=11;i++){
@@ -1443,7 +1470,7 @@ newUserForm.addEventListener('submit', (event) => {
 //     .catch((error)=>console.log(error));
 // }
 
-// deletePost(30)
+// deletePost(10)
 //     .catch((error)=>console.log(error));
 
 // const post = {
@@ -1475,7 +1502,7 @@ loadPosts()
     // .catch((error)=>console.log(error));
 
 // const post = {
-//     cintent: 'Barchino da pesca" + "\n" + "Vendo per passaggio a modello più grande."',
+//     content: 'Barchino da pesca" + "\n" + "Vendo per passaggio a modello più grande."',
 //     imgSrc: "https://i.ytimg.com/vi/wf9Xq55WKNs/maxresdefault.jpg",
 //     likes: [2, 4],
 //     authorId: 144,
